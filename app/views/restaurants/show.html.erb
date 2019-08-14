@@ -1,0 +1,31 @@
+<h1><%=@restaurant.name%></h1>
+
+<li><%= @restaurant.address %></li>
+<li><%= @restaurant.phone_number %></li>
+<li><%= @restaurant.category %></li>
+
+<br>
+<br>
+
+<h1>Last reviews</h1>
+
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li><%= review.content %></li>
+      <li><%= review.rating %></li>
+    <% end %>
+  </ul>
+
+<br>
+<br>
+
+<h1>Add a review</h1>
+
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+
+
+
